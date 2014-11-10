@@ -74,7 +74,7 @@
 (deftask absolute
   "Change relative paths in html files linking to
    files in :target-dir to absolute paths"
-  [m mapping        [str]  "[\"/assets\" \"public\" will change links to files in public to /assets"]
+  [m mapping MAPPING [str] "[\"/assets\" \"public\" will change links to files in public to /assets"]
   (core/with-pre-wrap
     (let [mapping (or ["/assets" "assets"] mapping)
           tgt-dir     (core/mktgtdir!)]
