@@ -1,6 +1,6 @@
 # `boot-absolute`
 
-Boot task to modify references to files in Boot fileset in `.html`
+Boot task to modify relative links to files in Boot fileset in `.html`
 files so that they become absolute. Especially useful when hosting
 assets through Compojure.
 
@@ -56,9 +56,9 @@ server (i.e. you just open an `.html` file from the filesystem.).
 ## How It Works And Why It May Not Work
 
 `boot-absolute` inspects all `.html` files in the fileset. It does
-this by creating [Enlive]() selectors that match elements that have an
-attribute that contains a path to another file in the fileset
-(relative from the `.html` file.)
+this by creating [Enlive](https://github.com/cgrand/enlive) selectors
+that match elements that have an attribute that contains a path to
+another file in the fileset (relative from the `.html` file.)
 
 **Currently only the attributes `href` and `src` are checked**, which
 means it won't work with other attributes. As the need for more
@@ -77,6 +77,8 @@ in `target/assets` so that they're absolute under `/assets`.
 ```
 
 will be modified to reference `/assets/css/screen.css` instead.
+
+<hr>
 
 ```clojure
 [m mapping        [str]  "[\"/assets\" \"public\"] will change links to files in public to /assets"]
