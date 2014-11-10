@@ -8,6 +8,14 @@ Provides the `absolute` task.
 
 [![Clojars Project](http://clojars.org/boot-absolute/latest-version.svg)](http://clojars.org/boot-absolute)
 
+## Quickstart
+
+```clojure
+(set-env! :dependencies #(conj % '[boot-absolute "0.0.1"]))
+(boot (absolute ["/assets" "public"])) ; REPL
+; Terminal: boot absolute -m /assets -m "public"
+```
+
 ## Rationale & Usage
 
 Let's assume you have a `assets/index.html` file that will end up in your `target-dir` as follows:
