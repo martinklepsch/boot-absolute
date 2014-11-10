@@ -52,7 +52,7 @@ Now everything should work right? Unfortunately not. Having relative
 links in your HTML will break your application when you're using the
 Javascript `History` API.  Also you cannot serve your `index.html`
 under another path than `/`, which you might want to do if you want to
-prerender things on the server. **Therefore it's useful to use
+prerender things on the server. **In these situations it's useful to use
 absolute paths in HTML files.**
 
 This task allows you to do this while staying compatible to
