@@ -37,14 +37,14 @@ Let's assume you have a `assets/index.html` file that will end up in your `targe
 This file references other files that reside in `target/assets`. Now
 you want to render `target/assets/index.html` on `/` using Compojure:
 
-```
+```clojure
 (GET "/" req (res/resource-response "index.html" {:root "assets"})))
 ```
 
 Now you'll run into problems as your page tries to request
 `/js/main.js`. These can be fixed by adding a route like this:
 
-```
+```clojure
 (resources "/" {:root "assets"})
 ```
 
