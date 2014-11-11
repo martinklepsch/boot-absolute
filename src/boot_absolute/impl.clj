@@ -1,7 +1,8 @@
 (ns boot-absolute.impl
   (:require [net.cgrand.enlive-html :as html]
             [clojure.java.io      :as io]
-            [boot.core         :as core :refer [deftask]]))
+            [boot.file         :as file]
+            [boot.core         :as core]))
 
 (defn files-relative-to
   "Given `f` and `files` determines relative paths from `f` to `files`"

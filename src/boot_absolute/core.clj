@@ -9,9 +9,15 @@
 
 (defn f [] (first (core/by-ext [".html"] (core/tgt-files))))
 
+(def deps
+  '[#_[org.clojure/clojure "1.6.0"]
+    #_[boot/core "2.0.0-pre22"]
+    [enlive "1.1.5"]
+    [boot-absolute "0.0.2"]])
+
 (defn enlive-pod []
   (pod/make-pod (-> (core/get-env)
-                    (assoc-in [:dependencies] '[[enlive "1.1.5"]])
+                    (assoc-in [:dependencies] deps)
                     (update-in [:src-paths] #(conj % "src")))))
 
 (def attributes
@@ -29,7 +35,7 @@
           _           (pod/eval-in enlive-pod (require 'boot-absolute.impl))]
       (doseq [f (core/by-ext [".html"] (core/tgt-files))]
         (let [out (io/file tgt-dir (core/relative-path f))
-              transformed (pod/eval-in enlive-pod (boot-absolute.impl/transform-file f ~mapping ~attributes))]
+              transformed (pod/eval-in enlive-pod (boot-absolute.impl/transform-file ~f ~mapping ~attributes))]
           (util/info "Making references to files from fileset absolute in %s ...\n" (core/relative-path f))
           (io/make-parents out)
           ;(println (apply str transformed))
