@@ -1,4 +1,4 @@
-# `boot-absolute`
+# boot-absolute
 
 Boot task to modify relative links to files in Boot fileset in `.html`
 files so that they become absolute. Especially useful when hosting
